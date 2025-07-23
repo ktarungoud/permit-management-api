@@ -46,20 +46,20 @@ bash
 
 Project Structure
 .
-├── app/
-│   ├── main.py        # Entry point for FastAPI app
-│   ├── models.py      # Permit model
-│   ├── schemas.py     # Pydantic schemas for data validation
-│   ├── database.py    # Database setup (e.g., SQLite)
-│   ├── crud.py        # Business logic for CRUD operations
-│   ├── tasks.py       # Celery async tasks (e.g., auto-expire permits)
-│   └── utils.py       # Any helper functions
-├── worker/
-│   └── celery_worker.py # Celery worker startup configuration
-├── docker-compose.yml # Docker Compose configuration for multi-service deployment
-├── Dockerfile         # Dockerfile for building the application image
-├── requirements.txt   # Python dependencies
-└── README.md          # Project README file
+- app/
+--- main.py        # Entry point for FastAPI app
+--- models.py      # Permit model
+--- schemas.py     # Pydantic schemas for data validation
+--- database.py    # Database setup (e.g., SQLite)
+--- crud.py        # Business logic for CRUD operations
+--- tasks.py       # Celery async tasks (e.g., auto-expire permits)
+--- utils.py       # Any helper functions
+- worker/
+--- celery_worker.py # Celery worker startup configuration
+- docker-compose.yml # Docker Compose configuration for multi-service deployment
+- Dockerfile         # Dockerfile for building the application image
+- requirements.txt   # Python dependencies
+- README.md          # Project README file
 
 Setup Instructions
 To get the application up and running using Docker Compose:
@@ -137,7 +137,6 @@ JSON
     "address": "123 Main St",
     "status": "pending",
     "created_at": "2023-10-27T10:00:00.000Z",
-    "updated_at": "2023-10-27T10:00:00.000Z"
   },
   {
     "id": "some_uuid_or_id_2",
@@ -146,7 +145,6 @@ JSON
     "address": "456 Oak Ave",
     "status": "approved",
     "created_at": "2023-10-26T09:30:00.000Z",
-    "updated_at": "2023-10-26T09:35:00.000Z"
   }
 ]
 3. Approve Permit (POST /permits/{permit_id}/approve)
@@ -166,7 +164,6 @@ JSON
   "address": "123 Main St",
   "status": "approved",
   "created_at": "2023-10-27T10:00:00.000Z",
-  "updated_at": "2023-10-27T10:01:00.000Z"
 }
 4. Revoke Permit (POST /permits/{permit_id}/revoke)
 Request:
@@ -185,7 +182,6 @@ JSON
   "address": "456 Oak Ave",
   "status": "revoked",
   "created_at": "2023-10-26T09:30:00.000Z",
-  "updated_at": "2023-10-27T10:02:00.000Z"
 }
 Design Decisions
 Architecture: The project follows a microservices-like architecture by separating the FastAPI application, Celery worker, and Celery Beat scheduler into distinct Docker containers. This promotes modularity, scalability, and independent deployment of components.
