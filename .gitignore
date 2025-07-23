@@ -1,0 +1,26 @@
+# Environment variables
+.env
+
+# Python specific files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# IDE specific files (e.g., PyCharm, VS Code)
+.idea/
+.vscode/
+*.swp
+*.bak
+*.swo
+
+# Docker specific files (if you had large local volumes you didn't want to track)
+# For this project, usually not needed as docker-compose down cleans up
+# volumes/

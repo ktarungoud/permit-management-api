@@ -1,0 +1,10 @@
+fastapi~=0.116.1
+uvicorn
+pydantic~=2.11.7
+celery~=5.5.3
+redis
+pymongo~=4.13.2
+motor~=3.7.1
+dnspython
+pydantic-settings~=2.10.1
+python-dotenv~=1.1.1
