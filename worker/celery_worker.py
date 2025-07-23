@@ -21,5 +21,5 @@ celery_app.conf.beat_schedule = {
         "options": {"expires": 300},
     },
 }
-celery_app.conf.timezone = "CST"
+celery_app.conf.timezone = "UTC"
 celery_app.conf.broker_connection_retry_on_startup = True
