@@ -3,7 +3,7 @@ from app.database import get_database # Import get_database here
 from app.crud import expire_pending_permits
 import asyncio
 
-# Initialize Celery app (will be configured in worker/celery_worker.py)
+# Initialize Celery app
 celery_app = Celery("permit_manager")
 
 @celery_app.task

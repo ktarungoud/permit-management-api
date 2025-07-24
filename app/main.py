@@ -16,8 +16,8 @@ app = FastAPI(
 @app.on_event("startup")
 async def startup_db_client():
     await connect_to_mongo()
-    # You might want to ensure an index exists for efficient queries on created_at and status
-    # This requires an active connection, so it's good to do here.
+    # to ensure an index exists for efficient queries on created_at and status
+    # This requires an active connection.
     await get_database().permits.create_index([("status", 1), ("created_at", 1)])
     print("Application startup complete.")
 
@@ -74,7 +74,7 @@ async def revoke_permit(
         raise HTTPException(status_code=404, detail="Permit not found or could not be updated")
     return updated_permit
 
-# Health check endpoint (optional but good practice)
+# Health check endpoint
 @app.get("/health", status_code=status.HTTP_200_OK, summary="Health check endpoint")
 async def health_check():
     """
