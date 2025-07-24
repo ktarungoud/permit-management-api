@@ -28,7 +28,7 @@ A background job runs every 1 minute using Celery Beat. This task performs the f
 Queries all pending permits.  
 If any pending permits were created over 5 minutes ago, their status is changed to expired.  
 
-**Technical Stack**
+**Technical Stack**  
 Python 3.x  
 FastAPI 
 Async framework support  
