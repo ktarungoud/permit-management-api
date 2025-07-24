@@ -4,27 +4,23 @@ This project implements a RESTful backend service for managing residential parki
 Overview
 The API allows citizens to apply for permits, and city administrators to approve or revoke them. A key feature is a background task that automatically expires pending permits after 5 minutes.
 
-Functional Requirements
+Functional Requirements  
+
 1. Permit Application
 POST /permits
-
 Input: name, license_plate, address
-
 Output: JSON of the created permit with status = pending
 
 2. List Permits
 GET /permits
-
 Optional Filter: ?status=pending|approved|revoked|expired
 
 3. Approve Permit
 POST /permits/{permit_id}/approve
-
 Changes permit status to approved.
 
 4. Revoke Permit
 POST /permits/{permit_id}/revoke
-
 Changes permit status to revoked.
 
 Async Requirement (Celery + Beat)
@@ -46,35 +42,34 @@ bash
 
 Project Structure
 .
-- app/
---- main.py        # Entry point for FastAPI app
---- models.py      # Permit model
---- schemas.py     # Pydantic schemas for data validation
---- database.py    # Database setup (e.g., SQLite)
---- crud.py        # Business logic for CRUD operations
---- tasks.py       # Celery async tasks (e.g., auto-expire permits)
---- utils.py       # Any helper functions
-- worker/
---- celery_worker.py # Celery worker startup configuration
-- docker-compose.yml # Docker Compose configuration for multi-service deployment
-- Dockerfile         # Dockerfile for building the application image
-- requirements.txt   # Python dependencies
-- README.md          # Project README file
-
-**Setup Instructions**
-To get the application up and running using Docker Compose:
-
+- app/  
+--- main.py        # Entry point for FastAPI app  
+--- models.py      # Permit model  
+--- schemas.py     # Pydantic schemas for data validation  
+--- database.py    # Database setup (e.g., SQLite)  
+--- crud.py        # Business logic for CRUD operations  
+--- tasks.py       # Celery async tasks (e.g., auto-expire permits)  
+--- utils.py       # Any helper functions  
+- worker/  
+--- celery_worker.py # Celery worker startup configuration  
+- docker-compose.yml # Docker Compose configuration for multi-service deployment  
+- Dockerfile         # Dockerfile for building the application image  
+- requirements.txt   # Python dependencies  
+- README.md          # Project README file  
+  
+**Setup Instructions**  
+To get the application up and running using Docker Compose:  
+  
 Clone the repository:
-Bash
+Bash  
+git clone <your-repository-url>  
+cd permit_management_api  
+Ensure Docker and Docker Compose are installed.  
 
-git clone <your-repository-url>/n
-cd permit_management_api/n
-Ensure Docker and Docker Compose are installed./n
-
-Create a .env file in the project root directory with:/n
-MONGODB_URL="mongodb+srv://rattarun6:WnxPvU2cPNnEHRJ6@cluster0.ailbszk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"/n
-DATABASE_NAME="permit_db"/n
-REDIS_BROKER_URL="redis://redis:6379/0"
+Create a .env file in the project root directory with:</br>
+MONGODB_URL="mongodb+srv://rattarun6:WnxPvU2cPNnEHRJ6@cluster0.ailbszk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"  
+DATABASE_NAME="permit_db"  
+REDIS_BROKER_URL="redis://redis:6379/0"  
 
 Build and start the services:
 Bash
