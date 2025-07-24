@@ -61,17 +61,20 @@ Project Structure
 - requirements.txt   # Python dependencies
 - README.md          # Project README file
 
-Setup Instructions
+**Setup Instructions**
 To get the application up and running using Docker Compose:
 
 Clone the repository:
 Bash
 
-git clone <your-repository-url>
-cd permit_management_api
-Ensure Docker and Docker Compose are installed.
+git clone <your-repository-url>/n
+cd permit_management_api/n
+Ensure Docker and Docker Compose are installed./n
 
-Create a .env file in the project root directory with necessary environment variables, particularly for the Redis broker URL (e.g., REDIS_BROKER_URL=redis://redis:6379/0).
+Create a .env file in the project root directory with:/n
+MONGODB_URL="mongodb+srv://rattarun6:WnxPvU2cPNnEHRJ6@cluster0.ailbszk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"/n
+DATABASE_NAME="permit_db"/n
+REDIS_BROKER_URL="redis://redis:6379/0"
 
 Build and start the services:
 Bash
